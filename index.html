@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REFRI-T Bolívar — Tu electrodoméstico tiene solución</title>
+<meta name="description" content="Reparación experta de neveras, lavadoras, aires acondicionados y línea blanca en Bolívar. Diagnóstico honesto, repuestos de calidad y garantía sobre cada trabajo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-950:#0A1B33;
+    --navy-800:#0F2A54;
+    --navy-700:#173F76;
+    --navy-600:#1E4E8F;
+    --navy-500:#2C63AD;
+    --orange-600:#E06A0F;
+    --orange-500:#F4841E;
+    --orange-400:#FF9B3D;
+    --amber-400:#FFC93C;
+    --paper:#F6F8FB;
+    --mist:#EAF0F7;
+    --ink:#0E1B2B;
+    --ink-soft:#4C5C71;
+    --white:#FFFFFF;
+    --line:#DBE4F0;
+    --shadow-lg: 0 30px 60px -20px rgba(10,27,51,.35);
+    --shadow-md: 0 16px 32px -12px rgba(10,27,51,.22);
+    --ease: cubic-bezier(.16,.84,.44,1);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Inter',system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;margin:0;padding:0;}
+  h1,h2,h3{margin:0;font-family:'Archivo',sans-serif;font-weight:800;letter-spacing:-.01em;}
+  .eyebrow{
+    font-family:'Space Grotesk',monospace;
+    font-size:.72rem;
+    font-weight:600;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--orange-500);
+  }
+  .wrap{max-width:1220px;margin:0 auto;padding:0 28px;}
+  .accent{color:var(--orange-500);}
+
+  /* logo wordmark: guion y T en naranja */
+  .wordmark{
+    font-family:'Archivo',sans-serif;
+    font-weight:900;
+    letter-spacing:-.01em;
+  }
+  .wordmark .navy{color:var(--navy-700);}
+  .wordmark .orange{color:var(--orange-500);}
+  .wordmark small{
+    display:block;
+    font-family:'Space Grotesk',monospace;
+    font-weight:600;
+    font-size:.32em;
+    letter-spacing:.28em;
+    color:var(--navy-600);
+    margin-top:.15em;
+  }
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible{
+    outline:3px solid var(--orange-500);
+    outline-offset:3px;
+    border-radius:6px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    padding:20px 0;
+    transition:padding .35s var(--ease), background .35s var(--ease), box-shadow .35s var(--ease);
+  }
+  header.scrolled{
+    padding:12px 0;
+    background:rgba(246,248,251,.86);
+    backdrop-filter:blur(14px) saturate(140%);
+    box-shadow:0 8px 30px -14px rgba(10,27,51,.25);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-row{display:flex;align-items:center;justify-content:space-between;gap:20px;}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .logo-slot{
+    width:52px;height:52px;border-radius:14px;
+    border:1.5px dashed var(--navy-500);
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;overflow:hidden;background:rgba(23,63,118,.05);
+    transition:transform .3s var(--ease);
+  }
+  .logo-slot img{width:100%;height:100%;object-fit:contain;}
+  .logo-slot.logo-empty{ }
+  .logo-slot.logo-empty::after{
+    content:"LOGO";
+    font-family:'Space Grotesk',monospace;
+    font-size:.55rem;font-weight:700;letter-spacing:.08em;
+    color:var(--navy-500);
+  }
+  .brand:hover .logo-slot{transform:rotate(-4deg) scale(1.05);}
+  .brand-text .wordmark{font-size:1.32rem;line-height:1;}
+
+  nav.main-nav{display:flex;align-items:center;gap:34px;}
+  nav.main-nav a{
+    font-size:.92rem;font-weight:600;color:var(--navy-800);
+    position:relative;padding:4px 0;
+  }
+  nav.main-nav a::after{
+    content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;
+    background:var(--orange-500);transition:width .3s var(--ease);
+  }
+  nav.main-nav a:hover::after{width:100%;}
+
+  .header-actions{display:flex;align-items:center;gap:14px;}
+  .phone-pill{
+    display:flex;align-items:center;gap:8px;
+    font-family:'Space Grotesk',monospace;font-weight:600;font-size:.88rem;
+    color:var(--navy-800);
+  }
+  .phone-pill svg{width:16px;height:16px;stroke:var(--orange-500);}
+
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    font-family:'Archivo',sans-serif;font-weight:700;font-size:.9rem;
+    padding:13px 24px;border-radius:100px;border:1.5px solid transparent;
+    cursor:pointer;transition:transform .3s var(--ease), box-shadow .3s var(--ease), background .3s var(--ease), color .3s var(--ease);
+    white-space:nowrap;
+  }
+  .btn-orange{
+    background:linear-gradient(135deg,var(--orange-400),var(--orange-600));
+    color:var(--white);
+    box-shadow:0 12px 24px -10px rgba(230,100,15,.65);
+  }
+  .btn-orange:hover{transform:translateY(-3px);box-shadow:0 18px 32px -10px rgba(230,100,15,.75);}
+  .btn-navy{background:var(--navy-800);color:#fff;}
+  .btn-navy:hover{transform:translateY(-3px);background:var(--navy-700);}
+  .btn-outline{
+    background:transparent;border-color:var(--navy-700);color:var(--navy-800);
+  }
+  .btn-outline:hover{background:var(--navy-800);color:#fff;transform:translateY(-3px);}
+  .btn-ghost-white{border-color:rgba(255,255,255,.4);color:#fff;}
+  .btn-ghost-white:hover{background:rgba(255,255,255,.12);transform:translateY(-3px);}
+  .btn svg{width:17px;height:17px;}
+
+  .burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;}
+  .burger span{width:24px;height:2.5px;background:var(--navy-800);border-radius:2px;transition:all .3s var(--ease);}
+  .burger.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg);}
+  .burger.open span:nth-child(2){opacity:0;}
+  .burger.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg);}
+
+  .mobile-panel{
+    position:fixed;inset:0;background:var(--navy-950);z-index:99;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;
+    opacity:0;visibility:hidden;transform:translateY(-12px);
+    transition:opacity .4s var(--ease), transform .4s var(--ease), visibility .4s;
+  }
+  .mobile-panel.open{opacity:1;visibility:visible;transform:translateY(0);}
+  .mobile-panel a{font-family:'Archivo',sans-serif;font-size:1.6rem;font-weight:800;color:#fff;}
+  .mobile-panel .btn{margin-top:10px;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;padding:168px 0 100px;
+    background:
+      radial-gradient(1000px 600px at 82% -10%, rgba(30,78,143,.16), transparent 60%),
+      linear-gradient(180deg,var(--paper) 0%, var(--mist) 100%);
+    overflow:hidden;
+  }
+  .roofline{
+    position:absolute;left:0;right:0;bottom:-2px;width:100%;height:auto;
+    display:block;pointer-events:none;
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;
+  }
+  .hero-copy h1{
+    font-size:clamp(2.4rem,4.6vw,3.85rem);
+    line-height:1.03;color:var(--navy-950);
+  }
+  .hero-copy h1 .flip{
+    font-family:'Archivo Black',sans-serif;
+    color:var(--orange-500);
+    display:block;
+  }
+  .hero-copy p.lead{
+    margin:22px 0 30px;font-size:1.08rem;line-height:1.65;color:var(--ink-soft);max-width:34em;
+  }
+  .hero-cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:38px;}
+  .trust-bar{display:flex;flex-wrap:wrap;gap:30px;padding-top:26px;border-top:1px solid var(--line);}
+  .trust-item{display:flex;flex-direction:column;}
+  .trust-item .num{
+    font-family:'Space Grotesk',monospace;font-weight:700;font-size:1.7rem;color:var(--navy-800);
+    display:flex;align-items:baseline;gap:2px;
+  }
+  .trust-item .num .accent{font-size:.85em;}
+  .trust-item .label{font-size:.8rem;color:var(--ink-soft);font-weight:500;}
+
+  .hero-visual{position:relative;height:520px;}
+  .hv-card{
+    position:absolute;border-radius:26px;overflow:hidden;box-shadow:var(--shadow-lg);
+    border:6px solid var(--white);
+  }
+  .hv-main{width:78%;height:76%;top:0;right:0;}
+  .hv-main img{width:100%;height:100%;object-fit:cover;}
+  .hv-sub{width:52%;height:46%;left:0;bottom:0;z-index:2;}
+  .hv-sub img{width:100%;height:100%;object-fit:cover;}
+  .hv-badge{
+    position:absolute;top:14%;left:-4%;z-index:3;
+    background:#fff;border-radius:18px;padding:14px 18px;box-shadow:var(--shadow-md);
+    display:flex;align-items:center;gap:12px;max-width:210px;
+    animation:float-y 5s ease-in-out infinite;
+  }
+  .hv-badge .dot{
+    width:11px;height:11px;border-radius:50%;background:#28C76F;position:relative;flex-shrink:0;
+  }
+  .hv-badge .dot::after{
+    content:"";position:absolute;inset:-4px;border-radius:50%;border:2px solid #28C76F;
+    animation:pulse-ring 1.8s ease-out infinite;
+  }
+  .hv-badge b{display:block;font-family:'Archivo',sans-serif;font-size:.82rem;color:var(--navy-900,var(--navy-950));}
+  .hv-badge span{font-size:.72rem;color:var(--ink-soft);}
+
+  .hv-bolt{
+    position:absolute;right:2%;bottom:6%;z-index:3;
+    width:74px;height:74px;border-radius:50%;
+    background:linear-gradient(135deg,var(--amber-400),var(--orange-500));
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 16px 30px -10px rgba(244,132,30,.6);
+    animation:float-y 4.5s ease-in-out infinite .4s;
+  }
+  .hv-bolt svg{width:34px;height:34px;fill:#fff;}
+
+  @keyframes float-y{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+  @keyframes pulse-ring{0%{opacity:.9;transform:scale(1);}100%{opacity:0;transform:scale(2.4);}}
+
+  /* ---------- SECTION SCAFFOLDING ---------- */
+  section{padding:104px 0;position:relative;}
+  .section-head{max-width:640px;margin-bottom:56px;}
+  .section-head h2{font-size:clamp(1.9rem,3vw,2.6rem);margin-top:12px;color:var(--navy-950);line-height:1.15;}
+  .section-head p{margin-top:16px;color:var(--ink-soft);font-size:1.02rem;line-height:1.6;}
+  .section-alt{background:var(--white);}
+  .section-navy{background:var(--navy-950);color:#fff;}
+
+  .reveal{opacity:0;transform:translateY(34px);transition:opacity .8s var(--ease), transform .8s var(--ease);}
+  .reveal.in-view{opacity:1;transform:translateY(0);}
+  .stagger .reveal:nth-child(1){transition-delay:.04s;}
+  .stagger .reveal:nth-child(2){transition-delay:.12s;}
+  .stagger .reveal:nth-child(3){transition-delay:.2s;}
+  .stagger .reveal:nth-child(4){transition-delay:.28s;}
+  .stagger .reveal:nth-child(5){transition-delay:.36s;}
+  .stagger .reveal:nth-child(6){transition-delay:.44s;}
+
+  /* ---------- STAT BAND ---------- */
+  .stat-band{
+    display:grid;grid-template-columns:1.15fr 1fr;gap:60px;align-items:center;
+  }
+  .stat-figure{
+    font-family:'Archivo Black',sans-serif;font-size:clamp(5rem,11vw,8.5rem);
+    line-height:.85;color:var(--navy-950);
+  }
+  .stat-figure span{color:var(--orange-500);}
+  .stat-figure-wrap{position:relative;}
+  .stat-figure-wrap .tag{
+    position:absolute;top:6%;right:-2%;
+    font-family:'Space Grotesk',monospace;font-weight:600;font-size:.78rem;
+    background:var(--navy-950);color:#fff;padding:8px 14px;border-radius:100px;
+    letter-spacing:.03em;
+  }
+  .stat-copy h3{font-size:1.5rem;color:var(--navy-950);line-height:1.3;margin-bottom:16px;}
+  .stat-copy p{color:var(--ink-soft);line-height:1.65;margin-bottom:24px;}
+  .mini-stats{display:flex;gap:34px;flex-wrap:wrap;}
+  .mini-stats div .n{font-family:'Space Grotesk',monospace;font-weight:700;font-size:1.5rem;color:var(--orange-500);}
+  .mini-stats div .l{font-size:.78rem;color:var(--ink-soft);}
+
+  /* ---------- SERVICES ---------- */
+  .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .service-card{
+    background:var(--white);border:1px solid var(--line);border-radius:22px;
+    padding:32px 28px;transition:transform .4s var(--ease), box-shadow .4s var(--ease), border-color .4s var(--ease);
+    position:relative;overflow:hidden;
+  }
+  .service-card::before{
+    content:"";position:absolute;inset:0;opacity:0;
+    background:linear-gradient(160deg,rgba(244,132,30,.07),transparent 60%);
+    transition:opacity .4s var(--ease);
+  }
+  .service-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-md);border-color:transparent;}
+  .service-card:hover::before{opacity:1;}
+  .service-icon{
+    width:52px;height:52px;border-radius:14px;
+    background:var(--navy-950);display:flex;align-items:center;justify-content:center;
+    margin-bottom:20px;transition:transform .45s var(--ease), background .45s var(--ease);
+  }
+  .service-card:hover .service-icon{transform:rotate(-8deg) scale(1.08);background:var(--orange-500);}
+  .service-icon svg{width:26px;height:26px;stroke:#fff;fill:none;stroke-width:1.8;}
+  .service-card h3{font-size:1.12rem;color:var(--navy-950);margin-bottom:10px;}
+  .service-card p{font-size:.9rem;color:var(--ink-soft);line-height:1.6;margin:0;}
+  .service-card.urgent{background:var(--navy-950);border-color:var(--navy-950);}
+  .service-card.urgent h3, .service-card.urgent p{color:#fff;}
+  .service-card.urgent p{color:rgba(255,255,255,.72);}
+  .service-card.urgent .service-icon{background:linear-gradient(135deg,var(--amber-400),var(--orange-500));}
+  .service-card.urgent:hover .service-icon{background:linear-gradient(135deg,var(--amber-400),var(--orange-500));}
+
+  /* ---------- RESULTS / WORK CARDS ---------- */
+  .work-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .work-card{
+    position:relative;border-radius:20px;overflow:hidden;aspect-ratio:3/4;
+    box-shadow:var(--shadow-md);
+  }
+  .work-card img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease);}
+  .work-card:hover img{transform:scale(1.08);}
+  .work-overlay{
+    position:absolute;inset:0;
+    background:linear-gradient(0deg, rgba(10,27,51,.94) 0%, rgba(10,27,51,.35) 45%, rgba(10,27,51,0) 70%);
+    display:flex;flex-direction:column;justify-content:flex-end;padding:20px;
+  }
+  .work-overlay .kicker{
+    font-family:'Space Grotesk',monospace;font-size:.68rem;letter-spacing:.1em;
+    color:var(--amber-400);text-transform:uppercase;margin-bottom:6px;font-weight:600;
+  }
+  .work-overlay h4{font-family:'Archivo',sans-serif;color:#fff;font-size:1rem;line-height:1.3;font-weight:700;}
+  .work-overlay p{
+    font-size:.82rem;color:rgba(255,255,255,.78);line-height:1.5;margin-top:8px;
+    max-height:0;opacity:0;overflow:hidden;transition:max-height .5s var(--ease), opacity .4s var(--ease);
+  }
+  .work-card:hover .work-overlay p, .work-card.tap-open .work-overlay p{max-height:100px;opacity:1;}
+
+  /* ---------- QUALITY / WHY US ---------- */
+  .why-wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:center;}
+  .why-visual{position:relative;border-radius:26px;overflow:hidden;box-shadow:var(--shadow-lg);aspect-ratio:4/5;}
+  .why-visual img{width:100%;height:100%;object-fit:cover;}
+  .why-visual .chip{
+    position:absolute;bottom:22px;left:22px;right:22px;
+    background:rgba(10,27,51,.82);backdrop-filter:blur(6px);
+    border-radius:16px;padding:16px 18px;color:#fff;
+  }
+  .why-visual .chip b{font-family:'Archivo',sans-serif;font-size:.95rem;}
+  .why-visual .chip span{display:block;font-size:.78rem;color:rgba(255,255,255,.7);margin-top:4px;}
+  .why-list{display:flex;flex-direction:column;gap:22px;margin-top:30px;}
+  .why-item{display:flex;gap:16px;align-items:flex-start;}
+  .why-item .num{
+    font-family:'Space Grotesk',monospace;font-weight:700;color:var(--orange-500);
+    font-size:.85rem;border:1.5px solid var(--orange-500);border-radius:50%;
+    width:30px;height:30px;flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  }
+  .why-item h4{font-family:'Archivo',sans-serif;font-size:1.02rem;color:var(--navy-950);margin-bottom:4px;}
+  .why-item p{font-size:.9rem;color:var(--ink-soft);margin:0;line-height:1.55;}
+
+  /* ---------- TEAM ---------- */
+  .team-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:20px;}
+  .team-card{
+    background:var(--white);border:1px solid var(--line);border-radius:20px;
+    padding:26px 20px;text-align:center;transition:transform .4s var(--ease), box-shadow .4s var(--ease);
+  }
+  .team-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md);}
+  .avatar{
+    width:92px;height:92px;border-radius:50%;margin:0 auto 16px;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Archivo',sans-serif;font-weight:800;font-size:1.3rem;color:#fff;
+    background:linear-gradient(135deg,var(--navy-600),var(--navy-950));
+    position:relative;overflow:hidden;
+    transition:transform .4s var(--ease);
+  }
+  .team-card:hover .avatar{transform:scale(1.05);}
+  .team-card:nth-child(1) .avatar{background:linear-gradient(135deg,var(--orange-400),var(--orange-600));}
+  .avatar::after{
+    content:"";position:absolute;inset:-5px;border-radius:50%;border:1.5px dashed var(--line);
+    pointer-events:none;
+  }
+  .avatar img{
+    width:100%;height:100%;object-fit:cover;border-radius:50%;position:relative;z-index:1;
+  }
+  .avatar .initials{display:none;}
+  .avatar.avatar-empty .initials{display:block;}
+  .avatar.avatar-empty::before{
+    content:"";position:absolute;inset:0;border-radius:50%;
+    border:1.5px dashed rgba(255,255,255,.55);
+  }
+  .team-card h4{font-family:'Archivo',sans-serif;font-size:1rem;color:var(--navy-950);margin-bottom:4px;}
+  .team-card span{font-size:.8rem;color:var(--orange-500);font-weight:600;}
+
+  /* ---------- COVERAGE ---------- */
+  .coverage-wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
+  .map-box{
+    position:relative;background:var(--navy-950);border-radius:26px;
+    aspect-ratio:4/3.4;overflow:hidden;
+  }
+  .map-box svg{width:100%;height:100%;}
+  .map-dot{transform-origin:center;animation:pulse-ring2 2.6s ease-out infinite;}
+  @keyframes pulse-ring2{0%{r:4;opacity:.9;}100%{r:26;opacity:0;}}
+  .town-chips{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px;}
+  .town-chip{
+    padding:10px 18px;border-radius:100px;border:1.5px solid var(--line);
+    font-size:.85rem;font-weight:600;color:var(--navy-800);
+    transition:all .3s var(--ease);
+  }
+  .town-chip:hover{background:var(--navy-950);color:#fff;border-color:var(--navy-950);transform:translateY(-3px);}
+
+  /* ---------- BRANDS MARQUEE ---------- */
+  .marquee-wrap{overflow:hidden;position:relative;padding:34px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .marquee-wrap::before, .marquee-wrap::after{
+    content:"";position:absolute;top:0;bottom:0;width:120px;z-index:2;
+  }
+  .marquee-wrap::before{left:0;background:linear-gradient(90deg,var(--white),transparent);}
+  .marquee-wrap::after{right:0;background:linear-gradient(270deg,var(--white),transparent);}
+  .marquee-track{display:flex;gap:64px;width:max-content;animation:scroll-x 26s linear infinite;}
+  .marquee-track span{
+    font-family:'Archivo',sans-serif;font-weight:800;font-size:1.3rem;color:var(--navy-800);
+    opacity:.55;white-space:nowrap;letter-spacing:.02em;
+  }
+  @keyframes scroll-x{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+  /* ---------- CTA CONTACT ---------- */
+  .cta-panel{
+    background:linear-gradient(135deg,var(--navy-950) 0%, var(--navy-800) 100%);
+    border-radius:32px;padding:64px;position:relative;overflow:hidden;
+    display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center;
+  }
+  .cta-panel::before{
+    content:"";position:absolute;width:420px;height:420px;border-radius:50%;
+    background:radial-gradient(circle,rgba(244,132,30,.35),transparent 70%);
+    top:-160px;right:-120px;
+  }
+  .cta-panel h2{color:#fff;font-size:clamp(1.7rem,3vw,2.3rem);line-height:1.2;position:relative;}
+  .cta-panel p{color:rgba(255,255,255,.72);margin-top:14px;max-width:32em;position:relative;line-height:1.6;}
+  .cta-actions{display:flex;flex-direction:column;gap:14px;position:relative;}
+  .cta-actions .btn{width:100%;padding:16px 22px;font-size:1rem;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--navy-950);color:rgba(255,255,255,.7);padding:64px 0 28px;}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,.12);}
+  .foot-brand .logo-slot{border-color:rgba(255,255,255,.35);background:rgba(255,255,255,.05);}
+  .foot-brand .logo-slot.logo-empty::after{color:rgba(255,255,255,.6);}
+  .foot-brand p{font-size:.88rem;color:rgba(255,255,255,.55);margin-top:16px;line-height:1.6;max-width:26em;}
+  footer h5{font-family:'Archivo',sans-serif;color:#fff;font-size:.85rem;letter-spacing:.05em;text-transform:uppercase;margin-bottom:18px;}
+  footer ul li{margin-bottom:11px;font-size:.9rem;}
+  footer ul li a:hover{color:var(--orange-400);}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:26px;font-size:.8rem;flex-wrap:wrap;gap:10px;}
+
+  /* ---------- WHATSAPP FLOAT ---------- */
+  .wa-float{
+    position:fixed;bottom:26px;right:26px;z-index:90;
+    width:60px;height:60px;border-radius:50%;
+    background:linear-gradient(135deg,#25D366,#1DA851);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 16px 30px -8px rgba(29,168,81,.55);
+    transition:transform .3s var(--ease);
+  }
+  .wa-float:hover{transform:scale(1.1) rotate(6deg);}
+  .wa-float svg{width:28px;height:28px;fill:#fff;}
+  .wa-float::after{
+    content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #25D366;
+    animation:pulse-ring 2.2s ease-out infinite;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:1080px){
+    .services-grid{grid-template-columns:repeat(2,1fr);}
+    .work-grid{grid-template-columns:repeat(2,1fr);}
+    .team-grid{grid-template-columns:repeat(3,1fr);}
+    .cta-panel{grid-template-columns:1fr;padding:44px 32px;}
+  }
+  @media (max-width:920px){
+    nav.main-nav, .header-actions .phone-pill, .header-actions .btn{display:none;}
+    .burger{display:flex;}
+    .hero-grid, .stat-band, .why-wrap, .coverage-wrap{grid-template-columns:1fr;}
+    .hero-visual{height:400px;margin-top:20px;}
+    .foot-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:640px){
+    section{padding:76px 0;}
+    .services-grid{grid-template-columns:1fr;}
+    .work-grid{grid-template-columns:1fr 1fr;}
+    .team-grid{grid-template-columns:1fr 1fr;}
+    .trust-bar{gap:20px;}
+    .cta-panel{padding:36px 22px;}
+    .foot-grid{grid-template-columns:1fr;}
+    .stat-figure{font-size:5.2rem;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header id="site-header">
+  <div class="wrap nav-row">
+    <a href="#top" class="brand">
+      <span class="logo-slot logo-empty" id="logoSlotNav">
+        <img src="logo.png" alt="Logo REFRI-T Bolívar" onerror="this.style.display='none'">
+      </span>
+      <span class="brand-text">
+        <span class="wordmark"><span class="navy">REFRI</span><span class="orange">-T</span><small>BOLÍVAR</small></span>
+      </span>
+    </a>
+    <nav class="main-nav">
+      <a href="#servicios">Servicios</a>
+      <a href="#resultados">Resultados</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#cobertura">Cobertura</a>
+      <a href="#equipo">Equipo</a>
+    </nav>
+    <div class="header-actions">
+      <a class="phone-pill" href="tel:+573000000000">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +57 300 000 0000
+      </a>
+      <a class="btn btn-orange" href="#contacto">Solicitar servicio</a>
+    </div>
+    <button class="burger" id="burgerBtn" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="mobile-panel" id="mobilePanel">
+  <a href="#servicios">Servicios</a>
+  <a href="#resultados">Resultados</a>
+  <a href="#nosotros">Nosotros</a>
+  <a href="#cobertura">Cobertura</a>
+  <a href="#equipo">Equipo</a>
+  <a class="btn btn-orange" href="#contacto">Solicitar servicio</a>
+</div>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow reveal in-view">Servicio a domicilio · Bolívar, Colombia</p>
+      <h1 class="reveal in-view">Tu electrodoméstico<span class="flip">tiene solución.</span></h1>
+      <p class="lead reveal in-view">No lo reemplaces, repáralo. Diagnóstico honesto, repuestos de calidad y garantía escrita sobre cada trabajo — antes de tocar una sola pieza te explicamos qué falla y cuánto cuesta.</p>
+      <div class="hero-cta-row reveal in-view">
+        <a href="#contacto" class="btn btn-orange">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.94 11.94 0 0 0 12.04 0C5.5 0 .2 5.3.2 11.85c0 2.09.55 4.13 1.6 5.93L0 24l6.4-1.68a11.86 11.86 0 0 0 5.63 1.43h.01c6.54 0 11.85-5.3 11.85-11.85 0-3.17-1.23-6.14-3.37-8.42zM12.04 21.5a9.6 9.6 0 0 1-4.9-1.34l-.35-.21-3.65.96.98-3.56-.23-.36a9.55 9.55 0 0 1-1.47-5.14c0-5.29 4.31-9.6 9.63-9.6 2.57 0 4.98 1 6.8 2.82a9.55 9.55 0 0 1 2.82 6.79c0 5.3-4.31 9.64-9.63 9.64zm5.28-7.2c-.29-.14-1.71-.84-1.98-.94-.27-.1-.46-.14-.66.14-.2.29-.76.94-.93 1.13-.17.2-.34.22-.63.08-.29-.15-1.22-.45-2.33-1.44-.86-.77-1.44-1.71-1.61-2-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.2-.29.29-.48.1-.2.05-.37-.02-.51-.08-.15-.66-1.6-.91-2.18-.24-.58-.48-.5-.66-.5-.17-.01-.37-.01-.56-.01-.2 0-.51.07-.78.36-.27.29-1.02 1-1.02 2.43s1.05 2.82 1.19 3.01c.15.2 2.06 3.15 5 4.42.7.3 1.24.48 1.67.61.7.22 1.34.19 1.84.12.56-.08 1.71-.7 1.96-1.37.24-.68.24-1.26.17-1.38-.07-.13-.26-.2-.55-.34z"/></svg>
+          Solicitar servicio
+        </a>
+        <a href="tel:+573000000000" class="btn btn-outline">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Llamar ahora
+        </a>
+      </div>
+      <div class="trust-bar reveal in-view">
+        <div class="trust-item"><span class="num">12<span class="accent">+</span></span><span class="label">años de experiencia</span></div>
+        <div class="trust-item"><span class="num">2<span class="accent">h</span></span><span class="label">respuesta promedio</span></div>
+        <div class="trust-item"><span class="num">90<span class="accent">d</span></span><span class="label">garantía por reparación</span></div>
+      </div>
+    </div>
+
+    <div class="hero-visual reveal in-view">
+      <div class="hv-card hv-main">
+        <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=900&q=80" alt="Nevera de acero en cocina moderna" loading="lazy">
+      </div>
+      <div class="hv-card hv-sub">
+        <img src="https://images.unsplash.com/photo-1632923565835-6582b54f2105?auto=format&fit=crop&w=700&q=80" alt="Lavadora y secadora" loading="lazy">
+      </div>
+      <div class="hv-badge">
+        <span class="dot"></span>
+        <div><b>Técnicos disponibles</b><span>hoy en tu zona</span></div>
+      </div>
+      <div class="hv-bolt" title="Urgencias el mismo día">
+        <svg viewBox="0 0 24 24"><path d="M13 2 3 14h7l-1 8 11-14h-7l0-6z"/></svg>
+      </div>
+    </div>
+  </div>
+
+  <svg class="roofline" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 90 L0 60 L280 60 L360 10 L440 60 L620 60 L620 90 Z" fill="none" stroke="#173F76" stroke-opacity="0.12" stroke-width="4"/>
+    <path d="M820 90 L820 40 L1000 40 L1080 5 L1160 40 L1440 40 L1440 90 Z" fill="none" stroke="#F4841E" stroke-opacity="0.14" stroke-width="4"/>
+  </svg>
+</section>
+
+<!-- ================= STAT BAND ================= -->
+<section class="section-alt">
+  <div class="wrap stat-band">
+    <div class="stat-figure-wrap reveal">
+      <div class="stat-figure">80<span>%</span></div>
+      <span class="tag">de las fallas tienen arreglo</span>
+    </div>
+    <div class="stat-copy reveal">
+      <p class="eyebrow">No compres uno nuevo sin hablar con nosotros</p>
+      <h3>La mayoría de los equipos que la gente da por perdidos solo necesitan una pieza, una limpieza o una recarga de gas.</h3>
+      <p>Repararlo cuesta una fracción de lo que vale reemplazarlo — y le da años más de vida útil a tu electrodoméstico y a tu bolsillo.</p>
+      <div class="mini-stats">
+        <div><div class="n">100%</div><div class="l">diagnóstico honesto</div></div>
+        <div><div class="n">0</div><div class="l">cobros ocultos</div></div>
+        <div><div class="n">7</div><div class="l">días a la semana</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICIOS ================= -->
+<section id="servicios">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Lo que reparamos</p>
+      <h2>Un técnico para cada equipo de tu casa.</h2>
+      <p>Servicio a domicilio con diagnóstico claro y repuestos originales o compatibles certificados.</p>
+    </div>
+    <div class="services-grid stagger">
+      <div class="service-card reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24" stroke="#fff"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="5" y1="11" x2="19" y2="11"/><line x1="8" y1="6" x2="8" y2="6.01"/><line x1="8" y1="15" x2="8" y2="15.01"/></svg></div>
+        <h3>Neveras y congeladores</h3>
+        <p>No enfría, escarcha, fugas de agua, ruido o motor que no arranca. Recarga de gas y cambio de compresor.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24" stroke="#fff"><rect x="3" y="2" width="18" height="20" rx="2"/><circle cx="12" cy="14" r="5"/><circle cx="12" cy="14" r="1.6"/><line x1="7" y1="5.5" x2="8.5" y2="5.5"/></svg></div>
+        <h3>Lavadoras y secadoras</h3>
+        <p>No centrifuga, no drena, no enciende, tarjetas electrónicas, rodamientos y bandas. Carga superior y frontal.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24" stroke="#fff"><rect x="2" y="6" width="20" height="9" rx="1.5"/><line x1="6" y1="19" x2="6" y2="21"/><line x1="18" y1="19" x2="18" y2="21"/><path d="M9 10.5c0-1.5 2-1.5 2-3M14 10.5c0-1.5 2-1.5 2-3"/></svg></div>
+        <h3>Aires acondicionados</h3>
+        <p>Mantenimiento, recarga de gas, no enfría, gotea o hace ruido. Instalación de split y mini-split.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24" stroke="#fff"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><circle cx="15" cy="9" r="2"/><rect x="7" y="14" width="10" height="4" rx="1"/></svg></div>
+        <h3>Estufas y hornos</h3>
+        <p>Quemadores, resistencias, termostatos y encendido electrónico. Equipos a gas y eléctricos.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24" stroke="#fff"><path d="M3 9 12 3l9 6"/><path d="M5 9v11h14V9"/><line x1="9" y1="21" x2="9" y2="14" stroke-width="1.8"/><line x1="15" y1="21" x2="15" y2="14" stroke-width="1.8"/></svg></div>
+        <h3>Cuartos fríos y vitrinas</h3>
+        <p>Refrigeración comercial para tu negocio: neveras industriales, cuartos fríos y vitrinas de exhibición.</p>
+      </div>
+      <div class="service-card urgent reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="#fff" stroke="none"><path d="M13 2 3 14h7l-1 8 11-14h-7l0-6z"/></svg></div>
+        <h3>Urgencias el mismo día</h3>
+        <p>¿Se te dañó hoy? Atendemos urgencias con visita el mismo día según disponibilidad de la zona.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RESULTADOS ================= -->
+<section id="resultados" class="section-alt">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Resultados reales</p>
+      <h2>Trabajos 100% reales de REFRI-T.</h2>
+      <p>Pasa el cursor sobre cada trabajo para ver qué se reparó — sin trucos, sin relleno, así quedan los equipos cuando salimos de tu casa.</p>
+    </div>
+    <div class="work-grid stagger">
+      <div class="work-card reveal">
+        <img src="trabajos/lavadora-mabe.jpg" alt="Lavadora Mabe reparada" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1632923565835-6582b54f2105?auto=format&fit=crop&w=600&q=80'">
+        <div class="work-overlay">
+          <span class="kicker">Lavadora Mabe</span>
+          <h4>Cambio de rodamientos y armado completo</h4>
+          <p>Diagnóstico de ruido en el tambor, cambio de rodamientos y sellos, y puesta a punto general.</p>
+        </div>
+      </div>
+      <div class="work-card reveal">
+        <img src="trabajos/nevera-recarga-gas.jpg" alt="Nevera reparada" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=600&q=80'">
+        <div class="work-overlay">
+          <span class="kicker">Nevera</span>
+          <h4>Limpieza del sistema de frío y recarga de gas</h4>
+          <p>Limpieza de condensador, prueba de fugas y recarga de gas refrigerante certificado.</p>
+        </div>
+      </div>
+      <div class="work-card reveal">
+        <img src="trabajos/nevera-nofrost.jpg" alt="Nevera no-frost" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1775210727386-4c798dfae209?auto=format&fit=crop&w=600&q=80'">
+        <div class="work-overlay">
+          <span class="kicker">Nevera no-frost</span>
+          <h4>Reparación de control y descongelamiento</h4>
+          <p>Cambio de tarjeta de control y resistencia de descongelamiento defectuosa.</p>
+        </div>
+      </div>
+      <div class="work-card reveal">
+        <img src="trabajos/estufa.jpg" alt="Estufa reparada" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1772974776381-68f1f5fef1aa?auto=format&fit=crop&w=600&q=80'">
+        <div class="work-overlay">
+          <span class="kicker">Estufa</span>
+          <h4>Quemadores, encendido y limpieza profunda</h4>
+          <p>Destape de quemadores, ajuste de encendido electrónico y limpieza total del equipo.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= NOSOTROS / CALIDAD ================= -->
+<section id="nosotros">
+  <div class="wrap why-wrap">
+    <div class="why-visual reveal">
+      <img src="trabajos/diagnostico.jpg" alt="Técnico trabajando en circuito electrónico" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1562941995-17dc31eaaf6d?auto=format&fit=crop&w=800&q=80'">
+      <div class="chip"><b>Diagnóstico antes que nada</b><span>Te explicamos qué falla y cuánto cuesta, sin sorpresas.</span></div>
+    </div>
+    <div class="why-copy reveal">
+      <p class="eyebrow">Servicio de calidad</p>
+      <h2>Trabajamos para que vuelvas a olvidarte de tu equipo.</h2>
+      <p style="color:var(--ink-soft);margin-top:16px;line-height:1.65;">Un buen arreglo es el que no vuelves a recordar. Tú vuelves a tu día; nosotros nos encargamos del resto.</p>
+      <div class="why-list">
+        <div class="why-item">
+          <span class="num">1</span>
+          <div><h4>Repuestos originales</h4><p>Usamos repuestos originales y compatibles certificados según cada marca.</p></div>
+        </div>
+        <div class="why-item">
+          <span class="num">2</span>
+          <div><h4>Garantía escrita</h4><p>Cada reparación queda respaldada con garantía escrita de 90 días.</p></div>
+        </div>
+        <div class="why-item">
+          <span class="num">3</span>
+          <div><h4>Dejamos todo limpio</h4><p>Salimos de tu casa como llegamos: sin rastro, sin desorden.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MARCAS ================= -->
+<section style="padding:0;">
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span>SAMSUNG</span><span>LG</span><span>WHIRLPOOL</span><span>MABE</span><span>ELECTROLUX</span><span>HACEB</span><span>FRIGIDAIRE</span><span>HAIER</span><span>OSTER</span><span>CHALLENGER</span>
+      <span>SAMSUNG</span><span>LG</span><span>WHIRLPOOL</span><span>MABE</span><span>ELECTROLUX</span><span>HACEB</span><span>FRIGIDAIRE</span><span>HAIER</span><span>OSTER</span><span>CHALLENGER</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EQUIPO ================= -->
+<section id="equipo" class="section-alt">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">El equipo</p>
+      <h2>Las manos detrás de cada reparación.</h2>
+      <p>Gente real, certificada y de confianza. Conoce a quienes entran a tu casa para dejar tu equipo como nuevo.</p>
+    </div>
+    <div class="team-grid stagger">
+      <div class="team-card reveal">
+        <div class="avatar avatar-empty">
+          <img src="equipo/jhonatan.jpg" alt="Foto de Jhonatan" onerror="this.style.display='none'">
+          <span class="initials">J</span>
+        </div>
+        <h4>Jhonatan</h4>
+        <span>Fundador · Técnico principal</span>
+      </div>
+      <div class="team-card reveal">
+        <div class="avatar avatar-empty">
+          <img src="equipo/carlos-mendoza.jpg" alt="Foto de Carlos Mendoza" onerror="this.style.display='none'">
+          <span class="initials">CM</span>
+        </div>
+        <h4>Carlos Mendoza</h4>
+        <span>Refrigeración comercial</span>
+      </div>
+      <div class="team-card reveal">
+        <div class="avatar avatar-empty">
+          <img src="equipo/andres-polo.jpg" alt="Foto de Andrés Polo" onerror="this.style.display='none'">
+          <span class="initials">AP</span>
+        </div>
+        <h4>Andrés Polo</h4>
+        <span>Lavadoras y línea blanca</span>
+      </div>
+      <div class="team-card reveal">
+        <div class="avatar avatar-empty">
+          <img src="equipo/jorge-padilla.jpg" alt="Foto de Jorge Padilla" onerror="this.style.display='none'">
+          <span class="initials">JP</span>
+        </div>
+        <h4>Jorge Padilla</h4>
+        <span>Aires acondicionados</span>
+      </div>
+      <div class="team-card reveal">
+        <div class="avatar avatar-empty">
+          <img src="equipo/laura-vega.jpg" alt="Foto de Laura Vega" onerror="this.style.display='none'">
+          <span class="initials">LV</span>
+        </div>
+        <h4>Laura Vega</h4>
+        <span>Agenda y atención</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= COBERTURA ================= -->
+<section id="cobertura">
+  <div class="wrap coverage-wrap">
+    <div class="reveal">
+      <p class="eyebrow">Cobertura</p>
+      <h2 style="font-size:clamp(1.9rem,3vw,2.6rem);color:var(--navy-950);margin-top:12px;">Servicio a domicilio en todo Bolívar.</h2>
+      <p style="color:var(--ink-soft);margin-top:16px;line-height:1.65;">¿No estás seguro si llegamos a tu zona? Escríbenos por WhatsApp y te confirmamos al instante.</p>
+      <div class="town-chips">
+        <span class="town-chip">Cartagena</span>
+        <span class="town-chip">Turbaco</span>
+        <span class="town-chip">Arjona</span>
+        <span class="town-chip">Magangué</span>
+        <span class="town-chip">Carmen de Bolívar</span>
+        <span class="town-chip">El Carmen</span>
+      </div>
+    </div>
+    <div class="map-box reveal">
+      <svg viewBox="0 0 400 340" aria-hidden="true">
+        <circle cx="150" cy="120" r="4" fill="#F4841E" class="map-dot"/>
+        <circle cx="150" cy="120" r="4" fill="#F4841E"/>
+        <circle cx="230" cy="90" r="3" fill="#FFC93C" class="map-dot" style="animation-delay:.4s"/>
+        <circle cx="230" cy="90" r="3" fill="#FFC93C"/>
+        <circle cx="110" cy="200" r="3" fill="#2C63AD" class="map-dot" style="animation-delay:.8s"/>
+        <circle cx="110" cy="200" r="3" fill="#2C63AD"/>
+        <circle cx="270" cy="220" r="3" fill="#F4841E" class="map-dot" style="animation-delay:1.2s"/>
+        <circle cx="270" cy="220" r="3" fill="#F4841E"/>
+        <circle cx="190" cy="260" r="3" fill="#FFC93C" class="map-dot" style="animation-delay:1.6s"/>
+        <circle cx="190" cy="260" r="3" fill="#FFC93C"/>
+        <path d="M150 120 L230 90 M150 120 L110 200 M150 120 L270 220 M150 120 L190 260" stroke="rgba(255,255,255,.18)" stroke-width="1.5" stroke-dasharray="4 5"/>
+        <text x="20" y="30" fill="rgba(255,255,255,.35)" font-family="Space Grotesk, monospace" font-size="12" letter-spacing="2">BOLÍVAR · COLOMBIA</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACTO / CTA ================= -->
+<section id="contacto" class="section-alt">
+  <div class="wrap">
+    <div class="cta-panel reveal">
+      <div>
+        <p class="eyebrow" style="color:var(--amber-400);">Agenda tu visita</p>
+        <h2>Cuéntanos qué falla. Nosotros vamos.</h2>
+        <p>Escríbenos por WhatsApp con el tipo de equipo, la marca y lo que está pasando. Te damos un diagnóstico estimado y agendamos la visita el mismo día cuando hay disponibilidad.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn btn-orange" href="https://wa.me/573000000000?text=Hola%20REFRI-T,%20necesito%20una%20reparaci%C3%B3n" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.94 11.94 0 0 0 12.04 0C5.5 0 .2 5.3.2 11.85c0 2.09.55 4.13 1.6 5.93L0 24l6.4-1.68a11.86 11.86 0 0 0 5.63 1.43h.01c6.54 0 11.85-5.3 11.85-11.85 0-3.17-1.23-6.14-3.37-8.42zM12.04 21.5a9.6 9.6 0 0 1-4.9-1.34l-.35-.21-3.65.96.98-3.56-.23-.36a9.55 9.55 0 0 1-1.47-5.14c0-5.29 4.31-9.6 9.63-9.6 2.57 0 4.98 1 6.8 2.82a9.55 9.55 0 0 1 2.82 6.79c0 5.3-4.31 9.64-9.63 9.64z"/></svg>
+          Escribir por WhatsApp
+        </a>
+        <a class="btn btn-ghost-white" href="tel:+573000000000">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          +57 300 000 0000
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="#top" class="brand">
+          <span class="logo-slot logo-empty">
+            <img src="logo.png" alt="Logo REFRI-T Bolívar" onerror="this.style.display='none'">
+          </span>
+          <span class="wordmark" style="font-size:1.3rem;"><span style="color:#fff;">REFRI</span><span class="orange">-T</span><small style="color:rgba(255,255,255,.55);">BOLÍVAR</small></span>
+        </a>
+        <p>Reparación experta de neveras, lavadoras, aires acondicionados y línea blanca. Servicio de calidad en todo Bolívar.</p>
+      </div>
+      <div>
+        <h5>Navegación</h5>
+        <ul>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#cobertura">Cobertura</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Servicios</h5>
+        <ul>
+          <li><a href="#servicios">Neveras</a></li>
+          <li><a href="#servicios">Lavadoras</a></li>
+          <li><a href="#servicios">Aires acondicionados</a></li>
+          <li><a href="#servicios">Refrigeración comercial</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contacto</h5>
+        <ul>
+          <li><a href="https://wa.me/573000000000">WhatsApp</a></li>
+          <li><a href="tel:+573000000000">+57 300 000 0000</a></li>
+          <li><a href="mailto:contacto@refrit.com">contacto@refrit.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year"></span> REFRI-T Bolívar. Todos los derechos reservados.</span>
+      <span>Servicio de calidad · Bolívar, Colombia</span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/573000000000?text=Hola%20REFRI-T,%20necesito%20una%20reparaci%C3%B3n" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M20.52 3.48A11.94 11.94 0 0 0 12.04 0C5.5 0 .2 5.3.2 11.85c0 2.09.55 4.13 1.6 5.93L0 24l6.4-1.68a11.86 11.86 0 0 0 5.63 1.43h.01c6.54 0 11.85-5.3 11.85-11.85 0-3.17-1.23-6.14-3.37-8.42zM12.04 21.5a9.6 9.6 0 0 1-4.9-1.34l-.35-.21-3.65.96.98-3.56-.23-.36a9.55 9.55 0 0 1-1.47-5.14c0-5.29 4.31-9.6 9.63-9.6 2.57 0 4.98 1 6.8 2.82a9.55 9.55 0 0 1 2.82 6.79c0 5.3-4.31 9.64-9.63 9.64z"/></svg>
+</a>
+
+<script>
+  // header scroll state
+  const header = document.getElementById('site-header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 30);
+  });
+
+  // mobile menu
+  const burger = document.getElementById('burgerBtn');
+  const panel = document.getElementById('mobilePanel');
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    panel.classList.toggle('open');
+  });
+  panel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    burger.classList.remove('open'); panel.classList.remove('open');
+  }));
+
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal:not(.in-view)');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+  // tap-to-open work cards on touch devices
+  document.querySelectorAll('.work-card').forEach(card => {
+    card.addEventListener('click', (e) => {
+      if (window.matchMedia('(hover: none)').matches) {
+        e.preventDefault();
+        document.querySelectorAll('.work-card').forEach(c => { if (c !== card) c.classList.remove('tap-open'); });
+        card.classList.toggle('tap-open');
+      }
+    });
+  });
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
